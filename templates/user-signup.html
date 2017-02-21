@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign UP</title>
+    <link type="text/css" rel="stylesheet" href="stylesheet.css"/>
+    <style type="text/css">
+        .error {
+            color: red;
+        }
+
+
+    </style>
+</head>
+<body>
+    <h1>
+        <a href="/">User Signup</a>
+    </h1>
+<form action="/userverify" method="post">
+        <div id="username" >
+
+             <div class="label" style="display: inline; padding-right:39px;">Username</div>
+            <div class="box" style="display: inline; padding-right:48px;">
+             <input class="box" type="text" name="username" value="{{username}}"/>
+            </div>
+             <p class="error">{{ error_username if error_username else "" }}</p>
+        </div>
+
+    <div class="label" style="display: inline; padding-right:41px;">Password</div>
+        <div class="box" style="display: inline; padding-right:48px;">
+            <input type="password" name="password" value="{{password}}"/>
+        </div>
+        <p class="error">{{ error_password if error_password else "" }}</p>
+
+    <div class="label" style="display: inline;">Confirm Pasword</div>
+        <div class="box" style="display: inline;">
+            <input type="password" name="confirm" value=""/>
+        </div>
+        <p class="=error">{{ error_verify if error_verify else "" }}</p>
+
+    <div style="display:inline; padding-right:10px;">Email(Optional)</div>
+        <div class="box" style="display: inline;">
+            <input type="text" name="email" value="{{email}}"/></div><br>
+        <p class="=error">{{ error_email if error_email else "" }}</p>
+    <buton><input type="submit" value="Submit"/></button>
+</form></div>
+</body>
+</html>
