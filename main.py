@@ -96,9 +96,15 @@ class NewPost(Handler):
     def post(self):
         title = self.request.get("title")
         body = self.request.get("body")
-        post = Post(parent=blog_key(), title=title, body=body)
-        post.put()
-        self.redirect('/blog/?%s' % str(post.key().id()))
+        if title and body:
+            post = Post(parent=blog_key(), title=title, body=body)
+            post.put()
+            self.redirect('/blog/%s' % str(post.key().id()))
+        else:
+            error = "subject and content, please!"
+            t = jinja_env.get_template("newpost.html")
+            content = t.render(error = error)
+            self.response.write(content)
 
 
 app = webapp2.WSGIApplication([
