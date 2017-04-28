@@ -103,7 +103,7 @@ class NewPost(Handler):
         else:
             error = "subject and content, please!"
             t = jinja_env.get_template("newpost.html")
-            content = t.render(error = error)
+            content = t.render(title=title, body=body, error = error)
             self.response.write(content)
 
 
