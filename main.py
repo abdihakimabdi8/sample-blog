@@ -60,7 +60,11 @@ class UserVerify(Handler):
             params['error_verify'] = " Please provide valid E-mail"
             have_error = True
         if have_error:
-            self.render('user-signup.html', **params)
+
+            t = jinja_env.get_template('user-signup.html')
+            response = t.render(username=username, email=email, params=params)
+            self.response.out.write(response)
+
         else:
 
 
@@ -103,7 +107,7 @@ class NewPost(Handler):
         else:
             error = "subject and content, please!"
             t = jinja_env.get_template("newpost.html")
-            content = t.render(title=title, body=body, error = error)
+            content = t.render(title=title, body=body, eror = error)
             self.response.write(content)
 
 
